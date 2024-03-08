@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\RecordController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,4 +22,5 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::view('/dashboard', 'index');
+Route::get('/records', [RecordController::class, 'index'])->name('records');
+Route::get('create-record', [RecordController::class, 'create'])->name('create-record');
