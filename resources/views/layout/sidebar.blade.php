@@ -15,7 +15,7 @@
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="currentweek-tab" data-bs-toggle="tab" data-bs-target="#currentweek" type="button" role="tab" aria-controls="home" aria-selected="true">
+                            <a class="nav-link active" id="currentweek-tab" data-bs-toggle="tab" data-bs-target="#currentweek" type="button" role="tab" aria-controls="home" aria-selected="true">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
                                     <g clip-path="url(#clip0_31_38)">
                                       <path d="M4.66667 0H2.66667C1.19391 0 0 1.19391 0 2.66667V4.66667C0 6.13943 1.19391 7.33333 2.66667 7.33333H4.66667C6.13943 7.33333 7.33333 6.13943 7.33333 4.66667V2.66667C7.33333 1.19391 6.13943 0 4.66667 0Z" fill="#42526E" fill-opacity="0.5"/>
@@ -29,8 +29,8 @@
                                       </clipPath>
                                     </defs>
                                   </svg>
-                                  Current Week
-                            </button>
+                                  Records
+                                </a>
                         </li>
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="weekly-tab" data-bs-toggle="tab" data-bs-target="#weekly" type="button" role="tab" aria-controls="profile" aria-selected="false">
