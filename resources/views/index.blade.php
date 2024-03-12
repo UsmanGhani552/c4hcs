@@ -900,7 +900,16 @@
             Settings
         </div>
         <div class="tab-pane link" id="link" role="tabpanel">
-            <h2>Create Link</h2>
+            <div class="container-fluid current-head">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h2>Create Link</h2>
+                    </div>
+                    <div class="col-lg-6">
+                        <a id="" class="btn btn-primary" href="#" role="button">Back</a>
+                    </div>
+                </div>
+            </div>
             <div class="formDiv">
                 <form action="">
                     <div class="row mainRow">
