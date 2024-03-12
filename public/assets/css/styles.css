@@ -39,7 +39,7 @@
                 width: 12px;
             }
         }
-     
+
         .paginate_button.next {
             svg{
                 width: 12px;
@@ -257,7 +257,7 @@
                 &:last-child{
                     width: 98%;
                     transition-duration: .5s;
-                    padding-left: 5vw; 
+                    padding-left: 5vw;
                     .headerRow{
                         width: 100% !important;
                         display: flex;
@@ -621,6 +621,37 @@
     }
 }
 
+@media(min-width:1500px) and (max-width:1700px){
+    .parent{
+        .container-fluid{
+            .row{
+                .col-lg-6:first-child{
+                    .sidebar{
+                        &.expand{
+                            margin-left: -11vw !important;
+                        }
+                    }
+                }
+                .col-lg-6:last-child{
+                    &.expand{
+                        padding-left: 11vw;
+                    }
+                    .boxData{
+                        .container-fluid{
+                            .row{
+                                column-gap: 30px !important;
+                                .box{
+                                    width: 15vw !important;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
 
 
 
@@ -647,7 +678,7 @@
                         padding-left: 100px !important;
                     }
                     &.expand{
-                        padding-left: 180px !important; 
+                        padding-left: 180px !important;
                         transition-duration: .5s;
                         header{
                             transition-duration: .5s;
@@ -708,14 +739,14 @@
                     width: 12px;
                 }
             }
-         
+
             .paginate_button.next {
                 display: inline;
                 svg{
                     width: 12px;
                 }
             }
-         
+
             span .paginate_button {
                 display: none;
             }
