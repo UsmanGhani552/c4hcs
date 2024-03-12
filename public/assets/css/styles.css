@@ -441,11 +441,15 @@
                                     }
                                 }
                                 .bottomTable{
+                                    .dataTables_scrollHead{
+                                        padding-right: 18px;
+                                    }
                                     table{
                                         /* max-height: 150px !important;
                                         overflow-y: scroll !important; */
                                         margin: 0;
                                         thead{
+                                            padding-right: 10px;
                                             /* border: none !important; */
                                             tr{
                                                 /* border: none; */
