@@ -24,3 +24,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/records', [RecordController::class, 'index'])->name('records');
 Route::get('create-record', [RecordController::class, 'create'])->name('create-record');
+Route::post('store-record', [RecordController::class, 'store'])->name('store-record');

@@ -2,36 +2,101 @@
 @section('content')
     <div class="tab-content">
         <div class="tab-pane active link" id="link" role="tabpanel">
-            <h2>Create Link</h2>
+            <div class="container-fluid current-head">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h2>Create Link</h2>
+                    </div>
+                    <div class="col-lg-6">
+                        <a id="" class="btn btn-primary" href="{{ route('records') }}" role="button">Back</a>
+                    </div>
+                </div>
+            </div>
             <div class="formDiv">
-                <form action="">
-                    <div class="row mainRow">
+                <form action="{{ route('store-record') }}" method="POST">
+                    @csrf
+                    {{-- <div class="row mainRow">
                         <div class="col-1 label">
                             <label for="name" class="form-label" aria-required="true">Name</label>
                         </div>
                         <div class="col input">
                             <input type="text" name="name" id="name" class="form-control" required>
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="row mainRow">
                         <div class="col">
                             <div class="row">
                                 <div class="col-2 label">
-                                    <label for="email" class="form-label" aria-required="true">Email</label>
+                                    <label for="screened" class="form-label" aria-required="true">Screened</label>
                                 </div>
                                 <div class="col input">
-                                    <input type="email" name="email" id="email" class="form-control" required>
+                                    <input type="number" name="screened" id="screened" class="form-control" required>
                                 </div>
                             </div>
                         </div>
                         <div class="col">
                             <div class="row">
                                 <div class="col-2 label">
-                                    <label for="phone" class="form-label" aria-required="true">Phone
-                                        No.</label>
+                                    <label for="presumptive" class="form-label" aria-required="true">Presumptive</label>
                                 </div>
                                 <div class="col input">
-                                    <input type="tel" name="phone" id="phone" class="form-control" required>
+                                    <input type="number" name="presumptive" id="presumptive" class="form-control" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mainRow">
+                        <div class="col">
+                            <div class="row">
+                                <div class="col-2 label">
+                                    <label for="positive" class="form-label" aria-required="true">Positive</label>
+                                </div>
+                                <div class="col input">
+                                    <input type="number" name="positive" id="positive" class="form-control" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="row">
+                                <div class="col-2 label">
+                                    <label for="linked" class="form-label" aria-required="true">Linked</label>
+                                </div>
+                                <div class="col input">
+                                    <input type="number" name="linked" id="linked" class="form-control" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mainRow">
+                        <div class="col">
+                            <div class="row">
+                                <div class="col-2 label">
+                                    <label for="negative" class="form-label" aria-required="true">Negative</label>
+                                </div>
+                                <div class="col input">
+                                    <input type="number" name="negative" id="negative" class="form-control" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="row">
+                                <div class="col-2 label">
+                                    <label for="pending" class="form-label" aria-required="true">Pending</label>
+                                </div>
+                                <div class="col input">
+                                    <input type="number" name="pending" id="pending" class="form-control" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mainRow">
+                        <div class="col-6">
+                            <div class="row">
+                                <div class="col-2 label">
+                                    <label for="invalid" class="form-label" aria-required="true">Invalid</label>
+                                </div>
+                                <div class="col input">
+                                    <input type="number" name="invalid" id="invalid" class="form-control" required>
                                 </div>
                             </div>
                         </div>

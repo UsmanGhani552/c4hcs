@@ -15,6 +15,13 @@ return new class extends Migration
     {
         Schema::create('records', function (Blueprint $table) {
             $table->id();
+            $table->string('screened');
+            $table->string('presumptive');
+            $table->string('positive');
+            $table->string('linked');
+            $table->string('negitive');
+            $table->string('pending');
+            $table->string('invalid');
             $table->timestamps();
         });
     }
