@@ -100,6 +100,37 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-6">
+                            <div class="row">
+                                <div class="col-2 label">
+                                    <label for="dropdown" class="form-label" aria-required="true">Dropdown</label>
+                                </div>
+                                <div class="col input">
+                                    {{-- <select class="form-select" aria-label="Default select example">
+                                        <div id="selectDropdown">
+                                            <option selected>Open this select menu</option>
+                                            <option value="1">One</option>
+                                            <option value="2">Two</option>
+                                            <option value="3">Three</option>
+                                        </div>
+                                    </select> --}}
+                                    <div class="dropdown open select">
+                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="triggerId" data-bs-toggle="dropdown">
+                                            Dropdown Button
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="triggerId">
+                                            <ul>
+                                                <li value="1">Button</li>
+                                                <li value="1">Button</li>
+                                                <li value="1">Button</li>
+                                                <li value="1">Button</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <button type="submit" class="btn btn-primary">Submit Changes</button>
                 </form>
