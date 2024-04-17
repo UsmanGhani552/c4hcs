@@ -7,7 +7,7 @@
             <div class="container-fluid current-head">
                 <div class="row">
                     <div class="col-lg-6">
-                        <h2>Current Week     Records</h2>
+                        <h2>Total Records</h2>
                     </div>
                     <div class="col-lg-6">
                         <a id="" class="btn btn-primary" href="{{ route('create-record') }}" role="button">Add
@@ -93,13 +93,29 @@
                                 <tr>
                                     <th>LGA</th>
                                     <th>SCR</th>
-                                    <th class="bluebackground">PERF</th>
+                                    <th class="bluebackground">
+                                        <div class="badge bg-primary">PERF</div>
+                                    </th>
                                     <th>PRES</th>
-                                    <th class="bluebackground">PERF</th>
+                                    <th class="bluebackground">
+                                        <div class="badge bg-primary">PERF</div>
+                                    </th>
                                     <th>POS</th>
-                                    <th class="bluebackground">PERF</th>
+                                    <th class="bluebackground">
+                                        <div class="badge bg-primary">PERF</div>
+                                    </th>
+                                    <th>BACK</th>
+                                    <th class="bluebackground">
+                                        <div class="badge bg-primary">PERF</div>
+                                    </th>
+                                    <th>CLC</th>
+                                    <th class="bluebackground">
+                                        <div class="badge bg-primary">PERF</div>
+                                    </th>
                                     <th>LKD</th>
-                                    <th class="bluebackground">PERF</th>
+                                    <th class="bluebackground">
+                                        <div class="badge bg-primary">PERF</div>
+                                    </th>
                                     <th>NEG</th>
                                     <th>PEND</th>
                                     <th>INVALID</th>
@@ -108,23 +124,90 @@
                             </thead>
                             <tbody class="overflow-auto">
                                 @foreach ($current_week_records as $record)
-                                    <tr>
-                                        <td>{{ $record->lga }}</td>
+                                    @php
+                                        $screened_performance = number_format(
+                                            ($record->screened / $weekly_target->screened) * 100,
+                                            0,
+                                            '',
+                                            '',
+                                        );
+                                        $presumptive_performance = number_format(
+                                            ($record->presumptive / $weekly_target->presumptive) * 100,
+                                            0,
+                                            '',
+                                            '',
+                                        );
+                                        $positive_performance = number_format(
+                                            ($record->positive / $weekly_target->positive) * 100,
+                                            0,
+                                            '',
+                                            '',
+                                        );
+                                        $linked_performance = number_format(
+                                            ($record->linked / $weekly_target->linked) * 100,
+                                            0,
+                                            '',
+                                            '',
+                                        );
+
+                                        $class = '';
+
+                                        if (
+                                            $screened_performance <= 30 ||
+                                            $presumptive_performance <= 30 ||
+                                            $positive_performance <= 30 ||
+                                            $linked_performance <= 30
+                                        ) {
+                                            $class = 'red';
+                                        } elseif (
+                                            ($screened_performance >= 31 && $screened_performance <= 60) ||
+                                            ($presumptive_performance >= 31 && $presumptive_performance <= 60) ||
+                                            ($positive_performance >= 31 && $positive_performance <= 60) ||
+                                            ($linked_performance >= 31 && $linked_performance <= 60)
+                                        ) {
+                                            $class = 'yellow';
+                                        } else {
+                                            $class = 'green';
+                                        }
+                                    @endphp
+                                    <tr class="{{ $class }}">
+                                        <td>{{ strtoupper($record->lga) }}</td>
                                         <td>{{ $record->screened }}</td>
                                         <td class="bluebackground">
-                                            {{ number_format(($record->screened / $weekly_target->screened) * 100, 0) }}%
+                                            <div class="badge bg-primary">
+                                                {{ $screened_performance }}%
+                                            </div>
                                         </td>
                                         <td>{{ $record->presumptive }}</td>
                                         <td class="bluebackground">
-                                            {{ number_format(($record->presumptive / $weekly_target->presumptive) * 100, 0) }}%
+                                            <div class="badge bg-primary">
+                                                {{ $presumptive_performance }}%
+                                            </div>
                                         </td>
                                         <td>{{ $record->positive }}</td>
                                         <td class="bluebackground">
-                                            {{ number_format(($record->positive / $weekly_target->positive) * 100, 0) }}%
+                                            <div class="badge bg-primary">
+                                                {{ $positive_performance }}%
+                                            </div>
+                                        </td>
+                                        <td>{{ $record->bacteriological }}</td>
+                                        <td class="bluebackground">
+                                            <div class="badge bg-primary">
+                                                {{ $positive_performance }}%
+                                            </div>
+                                        </td>
+                                        <td>{{ $record->clinical }}</td>
+                                        <td class="bluebackground">
+                                            <div class="badge bg-primary">
+                                                {{ $positive_performance }}%
+                                            </div>
                                         </td>
                                         <td>{{ $record->linked }}</td>
                                         <td class="bluebackground">
-                                            {{ number_format(($record->linked / $weekly_target->linked) * 100, 0) }}%</td>
+                                            <div class="badge bg-primary">
+                                                {{ $linked_performance }}%
+                                            </div>
+                                        </td>
                                         <td>{{ $record->negative }}</td>
                                         <td>{{ $record->pending }}</td>
                                         <td>{{ $record->invalid }}</td>
@@ -138,8 +221,10 @@
                                                     </svg>
                                                 </button>
                                                 <div class="dropdown-menu" aria-labelledby="triggerId">
-                                                    <a class="dropdown-item" href="{{route('edit-record',$record->id)}}">Edit</a>
-                                                    <a class="dropdown-item" href="{{route('delete-record',$record->id)}}">Delete</a>
+                                                    <a class="dropdown-item"
+                                                        href="{{ route('edit-record', $record->id) }}">Edit</a>
+                                                    <a class="dropdown-item"
+                                                        href="{{ route('delete-record', $record->id) }}">Delete</a>
                                                 </div>
                                             </div>
                                             <!-- <button class="btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M8 256a56 56 0 1 1 112 0A56 56 0 1 1 8 256zm160 0a56 56 0 1 1 112 0 56 56 0 1 1 -112 0zm216-56a56 56 0 1 1 0 112 56 56 0 1 1 0-112z"/></svg></button> -->
@@ -151,7 +236,7 @@
                     </div>
                 </div>
             </div>
-            <h2 class="boxHeading">Total Current Performance To Date</h2>
+            <h2 class="boxHeading">Monthly Performance</h2>
             <div class="boxData">
                 <div class="container-fluid">
                     <div class="row">
@@ -163,16 +248,16 @@
                                     </tr>
                                     <tr>
                                         <td class="heading">Target :</td>
-                                        <td colspan="2" class="heading">{{$mthly_target->screened}}</td>
+                                        <td colspan="2" class="heading">{{ $mthly_target->screened }}</td>
                                     </tr>
                                     <tr>
                                         <td class="heading">Total :</td>
-                                        <td class="heading">{{$screened_sum}}</td>
+                                        <td class="heading">{{ $screened_sum }}</td>
                                         {{-- <td class="heading">5000</td> --}}
                                     </tr>
                                     <tr>
                                         <td class="heading">Performance:</td>
-                                        <td>{{number_format(($screened_sum/$mthly_target->screened)*100,0)}}%</td>
+                                        <td>{{ number_format(($screened_sum / $mthly_target->screened) * 100, 0) }}%</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -185,16 +270,17 @@
                                     </tr>
                                     <tr>
                                         <td class="heading">Target :</td>
-                                        <td colspan="2" class="heading">{{$mthly_target->presumptive}}</td>
+                                        <td colspan="2" class="heading">{{ $mthly_target->presumptive }}</td>
                                     </tr>
                                     <tr>
                                         <td class="heading">Total :</td>
-                                        <td class="heading">{{$presumptive_sum}}</td>
+                                        <td class="heading">{{ $presumptive_sum }}</td>
                                         {{-- <td class="heading">5000</td> --}}
                                     </tr>
                                     <tr>
                                         <td class="heading">Performance:</td>
-                                        <td>{{number_format(($presumptive_sum/$mthly_target->presumptive)*100,0)}}%</td>
+                                        <td>{{ number_format(($presumptive_sum / $mthly_target->presumptive) * 100, 0) }}%
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -207,16 +293,16 @@
                                     </tr>
                                     <tr>
                                         <td class="heading">Target :</td>
-                                        <td colspan="2" class="heading">{{$mthly_target->positive}}</td>
+                                        <td colspan="2" class="heading">{{ $mthly_target->positive }}</td>
                                     </tr>
                                     <tr>
                                         <td class="heading">Total :</td>
-                                        <td class="heading">{{$positive_sum}}</td>
+                                        <td class="heading">{{ $positive_sum }}</td>
                                         {{-- <td class="heading">5000</td> --}}
                                     </tr>
                                     <tr>
                                         <td class="heading">Performance:</td>
-                                        <td>{{number_format(($positive_sum/$mthly_target->positive)*100,0)}}%</td>
+                                        <td>{{ number_format(($positive_sum / $mthly_target->positive) * 100, 0) }}%</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -229,16 +315,16 @@
                                     </tr>
                                     <tr>
                                         <td class="heading">Target :</td>
-                                        <td colspan="2" class="heading">{{$mthly_target->linked}}</td>
+                                        <td colspan="2" class="heading">{{ $mthly_target->linked }}</td>
                                     </tr>
                                     <tr>
                                         <td class="heading">Total :</td>
-                                        <td class="heading">{{$linked_sum}}</td>
+                                        <td class="heading">{{ $linked_sum }}</td>
                                         {{-- <td class="heading">5000</td> --}}
                                     </tr>
                                     <tr>
                                         <td class="heading">Performance:</td>
-                                        <td>{{number_format(($linked_sum/$mthly_target->linked)*100,0)}}%</td>
+                                        <td>{{ number_format(($linked_sum / $mthly_target->linked) * 100, 0) }}%</td>
                                     </tr>
                                 </tbody>
                             </table>

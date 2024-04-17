@@ -10,6 +10,8 @@ return array(
     'App\\Console\\Commands\\UpdateWeeklyTotals' => $baseDir . '/app/Console/Commands/UpdateWeeklyTotals.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
+    'App\\Exports\\MonthlyExport' => $baseDir . '/app/Exports/MonthlyExport.php',
+    'App\\Exports\\WeeklyExport' => $baseDir . '/app/Exports/WeeklyExport.php',
     'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
     'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
     'App\\Http\\Controllers\\Auth\\LoginController' => $baseDir . '/app/Http/Controllers/Auth/LoginController.php',

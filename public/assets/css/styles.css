@@ -39,6 +39,15 @@
     background-color: #FFC8C8 !important;
     padding: 10px !important;
 }
+.yellow{
+    background-color:#ffffbd !important;
+}
+.green{
+    background-color:#dbece6 !important;
+}
+.red{
+    background-color:#fdc9c9 !important;
+}
 /* header css end  */
 .parent{
     margin-bottom: 20px;
@@ -443,6 +452,9 @@
                                             color: #000;
                                             border-radius: 25px;
                                             padding: 10px 25px;
+                                            &.btn-success{
+                                                background-color:#28a745 !important;
+                                            }
                                         }
                                     }
                                 }
@@ -498,6 +510,7 @@
                                                 border: none;
                                                 td{
                                                     border: none;
+                                                    background-color:transparent;
                                                     &::after, &::before{
                                                         display: none;
                                                     }
@@ -522,6 +535,7 @@
                                                     font-weight: 400;
                                                     line-height: normal;
                                                     letter-spacing: -0.42px;
+                                                    background-color:transparent;
                                                     &.heading{
                                                         font-weight: 500 !important;
                                                     }
@@ -547,9 +561,9 @@
                                                     text-align: center;
                                                     /* border: none; */
                                                     &.bluebackground{
-                                                        background-color: #C9E4FF;
-                                                        border-top-left-radius: 10px;
-                                                        border-top-right-radius: 10px;
+                                                        /*background-color: #C9E4FF;*/
+                                                        /* border-top-left-radius: 10px;
+                                                        border-top-right-radius: 10px; */
                                                     }
                                                 }
                                             }
@@ -568,6 +582,7 @@
                                                     font-weight: 400;
                                                     line-height: normal;
                                                     padding:15px 0;
+                                                    background-color:transparent;
                                                     letter-spacing: -0.42px;
                                                     /* padding-top: 10px;
                                                     padding-top: 10px; */
@@ -576,11 +591,11 @@
                                                         font-weight: 500 !important;
                                                     }
                                                     &.bluebackground{
-                                                        background-color: #C9E4FF;
+                                                        /*background-color: #C9E4FF;*/
                                                     }
                                                     &.bluebackground:last-child{
-                                                        border-bottom-left-radius: 10px;
-                                                        border-bottom-right-radius: 10px;
+                                                        /* border-bottom-left-radius: 10px;
+                                                        border-bottom-right-radius: 10px; */
                                                     }
                                                     button{
                                                         padding: 0;
@@ -599,9 +614,11 @@
                                                     border: none !important;
                                                     td{
                                                         border: none !important;
+                                                        background-color:transparent;
                                                         &.bluebackground{
-                                                            border-bottom-left-radius: 10px;
-                                                            border-bottom-right-radius: 10px;
+                                                            /* border-bottom-left-radius: 10px;
+                                                            border-bottom-right-radius: 10px; */
+                                                            /*background-color: #C9E4FF;*/
                                                         }
                                                     }
                                                 }

@@ -8,7 +8,7 @@
                         <h2>Weekly</h2>
                     </div>
                     <div class="col-lg-6">
-                        <a id="" class="btn btn-success" href="{{ route('weekly-export') }}" role="button">Export
+                        <a id="" class="btn green" href="{{ route('weekly-export') }}" role="button">Export
                             </a>
                     </div>
                 </div>

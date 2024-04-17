@@ -584,6 +584,8 @@ class ComposerStaticInitaefa49f31e1176b5f5d8d48905b60ac3
         'App\\Console\\Commands\\UpdateWeeklyTotals' => __DIR__ . '/../..' . '/app/Console/Commands/UpdateWeeklyTotals.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\Exports\\MonthlyExport' => __DIR__ . '/../..' . '/app/Exports/MonthlyExport.php',
+        'App\\Exports\\WeeklyExport' => __DIR__ . '/../..' . '/app/Exports/WeeklyExport.php',
         'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
