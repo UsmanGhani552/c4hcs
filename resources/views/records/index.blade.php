@@ -104,11 +104,11 @@
                                     <th class="bluebackground">
                                         <div class="badge bg-primary">PERF</div>
                                     </th>
-                                    <th>BACK</th>
+                                    <th>LAB</th>
                                     <th class="bluebackground">
                                         <div class="badge bg-primary">PERF</div>
                                     </th>
-                                    <th>CLC</th>
+                                    <th>X-RAY</th>
                                     <th class="bluebackground">
                                         <div class="badge bg-primary">PERF</div>
                                     </th>
@@ -119,7 +119,8 @@
                                     <th>NEG</th>
                                     <th>PEND</th>
                                     <th>INVALID</th>
-                                    <th></th>
+                                    <th>Created At</th>
+                                    <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody class="overflow-auto">
@@ -211,6 +212,7 @@
                                         <td>{{ $record->negative }}</td>
                                         <td>{{ $record->pending }}</td>
                                         <td>{{ $record->invalid }}</td>
+                                        <td>{{ date('d-m-Y', strtotime($record->created_at)) }}</td>
                                         <td>
                                             <div class="dropdown open">
                                                 <button class="btn btn-secondary dropdown-toggle" type="button"

@@ -25,7 +25,7 @@
                             <thead class="">
                                 <tr>
                                     <th class="text-start">Type</th>
-                                    <th>Screnned</th>
+                                    <th>Screened</th>
                                     <th>Presumptive</th>
                                     <th>
                                         <div class="badge bg-danger">

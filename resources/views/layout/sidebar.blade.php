@@ -121,7 +121,7 @@
                                 </a>
                             </button>
                         </li>
-                        <li class="nav-item" role="presentation">
+                        {{-- <li class="nav-item" role="presentation">
                             <button class="nav-link" id="settings-tab">
                                 <a href="#">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
@@ -143,7 +143,7 @@
                                     Settings
                                 </a>
                             </button>
-                        </li>
+                        </li> --}}
                         {{-- <li class="nav-item" role="presentation">
                             <button class="nav-link" id="link-tab" data-bs-toggle="tab" data-bs-target="#link"
                                 type="button" role="tab">
