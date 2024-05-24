@@ -32,8 +32,14 @@ class UpdateMonthlyTotals extends Command
     {
         // Get the current date
         $endDate = now();
+
+        // Calculate the start date of the previous month
         $startDate = $endDate->copy()->subMonth()->startOfMonth();
+
+        // Calculate the end date of the previous month
         $endDate = $endDate->copy()->subMonth()->endOfMonth();
+
+        // Retrieve entries within the previous month
         $entries = Record::whereBetween('created_at', [$startDate, $endDate])->get();
 
         $monthly_target = Target::where('id', 2)->first();

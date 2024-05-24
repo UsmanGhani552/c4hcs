@@ -19,7 +19,7 @@
 
                         <div class="col-6">
                             <div class="row">
-                                <div class="col-2 label">
+                                <div class="col-3 label">
                                     <label for="dropdown" class="form-label" aria-required="true">LGA</label>
                                 </div>
                                 <div class="col input">
@@ -45,7 +45,7 @@
                         </div>
                         <div class="col">
                             <div class="row">
-                                <div class="col-2 label">
+                                <div class="col-3 label">
                                     <label for="screened" class="form-label" aria-required="true">Screened</label>
                                 </div>
                                 <div class="col input">
@@ -61,7 +61,7 @@
                     <div class="row mainRow">
                         <div class="col">
                             <div class="row">
-                                <div class="col-2 label">
+                                <div class="col-3 label">
                                     <label for="presumptive" class="form-label" aria-required="true">Presumptive</label>
                                 </div>
                                 <div class="col input">
@@ -72,22 +72,19 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col">
+                        {{-- <div class="col">
                             <div class="row">
-                                <div class="col-2 label">
+                                <div class="col-3 label">
                                     <label for="positive" class="form-label" aria-required="true">Positive</label>
                                 </div>
                                 <div class="col input">
                                     <input type="number" name="positive" id="positive" class="form-control" disabled>
                                 </div>
                             </div>
-                        </div>
-
-                    </div>
-                    <div class="row mainRow">
+                        </div> --}}
                         <div class="col">
                             <div class="row">
-                                <div class="col-2 label">
+                                <div class="col-3 label">
                                     <label for="bacteriological" class="form-label"
                                         aria-required="true">Bacteriological</label>
                                 </div>
@@ -99,9 +96,13 @@
                                 </div>
                             </div>
                         </div>
+
+                    </div>
+                    <div class="row mainRow">
+
                         <div class="col">
                             <div class="row">
-                                <div class="col-2 label">
+                                <div class="col-3 label">
                                     <label for="clinical" class="form-label" aria-required="true">Clinical</label>
                                 </div>
                                 <div class="col input">
@@ -112,12 +113,9 @@
                                 </div>
                             </div>
                         </div>
-
-                    </div>
-                    <div class="row mainRow">
                         <div class="col">
                             <div class="row">
-                                <div class="col-2 label">
+                                <div class="col-3 label">
                                     <label for="linked" class="form-label" aria-required="true">Linked</label>
                                 </div>
                                 <div class="col input">
@@ -128,9 +126,13 @@
                                 </div>
                             </div>
                         </div>
+
+                    </div>
+                    <div class="row mainRow">
+
                         <div class="col">
                             <div class="row">
-                                <div class="col-2 label">
+                                <div class="col-3 label">
                                     <label for="negative" class="form-label" aria-required="true">Negative</label>
                                 </div>
                                 <div class="col input">
@@ -141,12 +143,9 @@
                                 </div>
                             </div>
                         </div>
-
-                    </div>
-                    <div class="row mainRow">
                         <div class="col">
                             <div class="row">
-                                <div class="col-2 label">
+                                <div class="col-3 label">
                                     <label for="pending" class="form-label" aria-required="true">Pending</label>
                                 </div>
                                 <div class="col input">
@@ -157,9 +156,13 @@
                                 </div>
                             </div>
                         </div>
+
+                    </div>
+                    <div class="row mainRow">
+
                         <div class="col-6">
                             <div class="row">
-                                <div class="col-2 label">
+                                <div class="col-3 label">
                                     <label for="invalid" class="form-label" aria-required="true">Invalid</label>
                                 </div>
                                 <div class="col input">

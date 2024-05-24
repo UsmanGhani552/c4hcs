@@ -8,6 +8,19 @@ use Illuminate\Http\Request;
 
 class TargetController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     *
+     */
+    public function __construct(){
+        $this->middleware('role_or_permission:Target access|Target create|Target edit|Target delete', ['only' => ['index','show']]);
+        $this->middleware('role_or_permission:Target create', ['only' => ['create','store']]);
+        $this->middleware('role_or_permission:Target edit', ['only' => ['edit','update']]);
+        $this->middleware('role_or_permission:Target delete', ['only' => ['destroy']]);
+    }
+
     public function index()
     {
         $records = Record::all();
@@ -17,14 +30,16 @@ class TargetController extends Controller
         $linked_sum = $records->sum('linked');
 
         $targets = Target::all();
-        return view('target.index', compact('targets','screened_sum','presumptive_sum','positive_sum','linked_sum'));
+        return view('target.index', compact('targets', 'screened_sum', 'presumptive_sum', 'positive_sum', 'linked_sum'));
     }
 
-    public function edit(Target $target){
-        return view('target.edit',compact('target'));
+    public function edit(Target $target)
+    {
+        return view('target.edit', compact('target'));
     }
 
-    public function update(Request $request , Target $target){
+    public function update(Request $request, Target $target)
+    {
         $request->validate([
             'targets' => 'required',
             'screened' => 'required',
@@ -42,4 +57,5 @@ class TargetController extends Controller
         $target->save();
         return redirect()->route('targets')->withSuccess('Target Updated Successfully');
     }
+
 }

@@ -23,12 +23,12 @@
 @endsection
 @extends('layouts.master')
 
-@section('title')
+{{-- @section('title')
     {{ $blog->meta_title }}
 @endsection
 
 @section('description')
     {{ $blog->meta_description }}
 @endsection
-
+ --}}
 

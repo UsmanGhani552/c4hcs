@@ -9,9 +9,12 @@
                     <div class="col-lg-6">
                         <h2>Total Records</h2>
                     </div>
+
                     <div class="col-lg-6">
-                        <a id="" class="btn btn-primary" href="{{ route('create-record') }}" role="button">Add
-                            Record</a>
+                        @can('Record create')
+                            <a id="" class="btn btn-primary" href="{{ route('create-record') }}" role="button">Add
+                                Record</a>
+                        @endcan
                     </div>
                 </div>
             </div>
@@ -92,6 +95,7 @@
                             <thead class="">
                                 <tr>
                                     <th>LGA</th>
+                                    <th>Created At</th>
                                     <th>SCR</th>
                                     <th class="bluebackground">
                                         <div class="badge bg-primary">PERF</div>
@@ -119,121 +123,182 @@
                                     <th>NEG</th>
                                     <th>PEND</th>
                                     <th>INVALID</th>
-                                    <th>Created At</th>
+
                                     <th>Actions</th>
                                 </tr>
                             </thead>
-                            <tbody class="overflow-auto">
-                                @foreach ($current_week_records as $record)
-                                    @php
-                                        $screened_performance = number_format(
-                                            ($record->screened / $weekly_target->screened) * 100,
-                                            0,
-                                            '',
-                                            '',
-                                        );
-                                        $presumptive_performance = number_format(
-                                            ($record->presumptive / $weekly_target->presumptive) * 100,
-                                            0,
-                                            '',
-                                            '',
-                                        );
-                                        $positive_performance = number_format(
-                                            ($record->positive / $weekly_target->positive) * 100,
-                                            0,
-                                            '',
-                                            '',
-                                        );
-                                        $linked_performance = number_format(
-                                            ($record->linked / $weekly_target->linked) * 100,
-                                            0,
-                                            '',
-                                            '',
-                                        );
+                            @can('Record access')
+                                <tbody class="overflow-auto">
+                                    @foreach ($current_week_records as $record)
+                                        @php
+                                            $screened_performance = number_format(
+                                                ($record->screened / $weekly_target->screened) * 100,
+                                                0,
+                                                '',
+                                                '',
+                                            );
+                                            $presumptive_performance = number_format(
+                                                ($record->presumptive / $weekly_target->presumptive) * 100,
+                                                0,
+                                                '',
+                                                '',
+                                            );
+                                            $positive_performance = number_format(
+                                                ($record->positive / $weekly_target->positive) * 100,
+                                                0,
+                                                '',
+                                                '',
+                                            );
+                                            $linked_performance = number_format(
+                                                ($record->linked / $weekly_target->linked) * 100,
+                                                0,
+                                                '',
+                                                '',
+                                            );
 
-                                        $class = '';
+                                            // $class = '';
 
-                                        if (
-                                            $screened_performance <= 30 ||
-                                            $presumptive_performance <= 30 ||
-                                            $positive_performance <= 30 ||
-                                            $linked_performance <= 30
-                                        ) {
-                                            $class = 'red';
-                                        } elseif (
-                                            ($screened_performance >= 31 && $screened_performance <= 60) ||
-                                            ($presumptive_performance >= 31 && $presumptive_performance <= 60) ||
-                                            ($positive_performance >= 31 && $positive_performance <= 60) ||
-                                            ($linked_performance >= 31 && $linked_performance <= 60)
-                                        ) {
-                                            $class = 'yellow';
-                                        } else {
-                                            $class = 'green';
-                                        }
-                                    @endphp
-                                    <tr class="{{ $class }}">
-                                        <td>{{ strtoupper($record->lga) }}</td>
-                                        <td>{{ $record->screened }}</td>
-                                        <td class="bluebackground">
-                                            <div class="badge bg-primary">
-                                                {{ $screened_performance }}%
-                                            </div>
-                                        </td>
-                                        <td>{{ $record->presumptive }}</td>
-                                        <td class="bluebackground">
-                                            <div class="badge bg-primary">
-                                                {{ $presumptive_performance }}%
-                                            </div>
-                                        </td>
-                                        <td>{{ $record->positive }}</td>
-                                        <td class="bluebackground">
-                                            <div class="badge bg-primary">
-                                                {{ $positive_performance }}%
-                                            </div>
-                                        </td>
-                                        <td>{{ $record->bacteriological }}</td>
-                                        <td class="bluebackground">
-                                            <div class="badge bg-primary">
-                                                {{ $positive_performance }}%
-                                            </div>
-                                        </td>
-                                        <td>{{ $record->clinical }}</td>
-                                        <td class="bluebackground">
-                                            <div class="badge bg-primary">
-                                                {{ $positive_performance }}%
-                                            </div>
-                                        </td>
-                                        <td>{{ $record->linked }}</td>
-                                        <td class="bluebackground">
-                                            <div class="badge bg-primary">
-                                                {{ $linked_performance }}%
-                                            </div>
-                                        </td>
-                                        <td>{{ $record->negative }}</td>
-                                        <td>{{ $record->pending }}</td>
-                                        <td>{{ $record->invalid }}</td>
-                                        <td>{{ date('d-m-Y', strtotime($record->created_at)) }}</td>
-                                        <td>
-                                            <div class="dropdown open">
-                                                <button class="btn btn-secondary dropdown-toggle" type="button"
-                                                    id="triggerId" data-bs-toggle="dropdown">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                                                        <path
-                                                            d="M8 256a56 56 0 1 1 112 0A56 56 0 1 1 8 256zm160 0a56 56 0 1 1 112 0 56 56 0 1 1 -112 0zm216-56a56 56 0 1 1 0 112 56 56 0 1 1 0-112z" />
-                                                    </svg>
-                                                </button>
-                                                <div class="dropdown-menu" aria-labelledby="triggerId">
-                                                    <a class="dropdown-item"
-                                                        href="{{ route('edit-record', $record->id) }}">Edit</a>
-                                                    <a class="dropdown-item"
-                                                        href="{{ route('delete-record', $record->id) }}">Delete</a>
+                                            // if (
+                                            //     $screened_performance <= 30 ||
+                                            //     $presumptive_performance <= 30 ||
+                                            //     $positive_performance <= 30 ||
+                                            //     $linked_performance <= 30
+                                            // ) {
+                                            //     $class = 'red';
+                                            // } elseif (
+                                            //     ($screened_performance >= 31 && $screened_performance <= 60) ||
+                                            //     ($presumptive_performance >= 31 && $presumptive_performance <= 60) ||
+                                            //     ($positive_performance >= 31 && $positive_performance <= 60) ||
+                                            //     ($linked_performance >= 31 && $linked_performance <= 60)
+                                            // ) {
+                                            //     $class = 'yellow';
+                                            // } else {
+                                            //     $class = 'green';
+                                            // }
+
+                                        @endphp
+                                        <tr>
+                                            <td>{{ strtoupper($record->lga) }}</td>
+                                            <td>{{ date('d-m-Y', strtotime($record->created_at)) }}</td>
+                                            <td>
+                                                {{-- <div
+                                                    class="badge rounded-pill {{ $screened_performance <= 49 ? 'bg-danger' : ($screened_performance >= 50 && $screened_performance <= 79 ? 'bg-warning' : 'bg-success') }}"> --}}
+                                                {{ $record->screened }}
+                                                {{-- </div> --}}
+                                            </td>
+                                            <td class="bluebackground">
+                                                {{-- <div class="badge bg-primary">
+                                                    {{ $screened_performance }}%
+                                                </div> --}}
+                                                <div
+                                                    class="badge rounded-pill {{ $screened_performance <= 49 ? 'bg-danger' : ($screened_performance >= 50 && $screened_performance <= 79 ? 'bg-warning' : 'bg-success') }}">
+                                                    {{ $screened_performance }}%
                                                 </div>
-                                            </div>
-                                            <!-- <button class="btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M8 256a56 56 0 1 1 112 0A56 56 0 1 1 8 256zm160 0a56 56 0 1 1 112 0 56 56 0 1 1 -112 0zm216-56a56 56 0 1 1 0 112 56 56 0 1 1 0-112z"/></svg></button> -->
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
+                                            </td>
+                                            <td>
+                                                {{-- <div class="badge rounded-pill {{ $presumptive_performance <= 49 ? 'bg-danger' : ($presumptive_performance >= 50 && $presumptive_performance <= 79 ? 'bg-warning' : 'bg-success') }}"> --}}
+                                                {{ $record->presumptive }}
+                                                {{-- </div> --}}
+                                            </td>
+                                            <td class="bluebackground">
+                                                {{-- <div class="badge bg-primary">
+                                                    {{ $presumptive_performance }}%
+                                                </div> --}}
+                                                <div
+                                                    class="badge rounded-pill {{ $presumptive_performance <= 49 ? 'bg-danger' : ($presumptive_performance >= 50 && $presumptive_performance <= 79 ? 'bg-warning' : 'bg-success') }}">
+                                                    {{ $presumptive_performance }}%
+                                                </div>
+                                            </td>
+                                            <td>
+                                                {{-- <div
+                                                    class="badge rounded-pill {{ $positive_performance <= 49 ? 'bg-danger' : ($positive_performance >= 50 && $positive_performance <= 79 ? 'bg-warning' : 'bg-success') }}"> --}}
+                                                {{ $record->positive }}
+                                                {{-- </div> --}}
+                                            </td>
+                                            <td class="bluebackground">
+                                                {{-- <div class="badge bg-primary">
+                                                    {{ $positive_performance }}%
+                                                </div> --}}
+                                                <div
+                                                    class="badge rounded-pill {{ $positive_performance <= 49 ? 'bg-danger' : ($positive_performance >= 50 && $positive_performance <= 79 ? 'bg-warning' : 'bg-success') }}">
+                                                    {{ $positive_performance }}%
+                                                </div>
+                                            </td>
+                                            <td>
+                                                {{-- <div
+                                                    class="badge rounded-pill {{ $positive_performance <= 49 ? 'bg-danger' : ($positive_performance >= 50 && $positive_performance <= 79 ? 'bg-warning' : 'bg-success') }}"> --}}
+                                                {{ $record->bacteriological }}
+                                                {{-- </div> --}}
+                                            </td>
+                                            <td class="bluebackground">
+                                                {{-- <div class="badge bg-primary">
+                                                    {{ $positive_performance }}%
+                                                </div> --}}
+                                                <div
+                                                    class="badge rounded-pill {{ $positive_performance <= 49 ? 'bg-danger' : ($positive_performance >= 50 && $positive_performance <= 79 ? 'bg-warning' : 'bg-success') }}">
+                                                    {{ $positive_performance }}%
+                                                </div>
+                                            </td>
+                                            <td>
+                                                {{-- <div
+                                                    class="badge rounded-pill {{ $positive_performance <= 49 ? 'bg-danger' : ($positive_performance >= 50 && $positive_performance <= 79 ? 'bg-warning' : 'bg-success') }}"> --}}
+                                                {{ $record->clinical }}
+                                                {{-- </div> --}}
+                                            </td>
+                                            <td class="bluebackground">
+                                                {{-- <div class="badge bg-primary">
+                                                    {{ $positive_performance }}%
+                                                </div> --}}
+                                                <div
+                                                    class="badge rounded-pill {{ $positive_performance <= 49 ? 'bg-danger' : ($positive_performance >= 50 && $positive_performance <= 79 ? 'bg-warning' : 'bg-success') }}">
+                                                    {{ $positive_performance }}%
+                                                </div>
+                                            </td>
+                                            <td>
+                                                {{-- <div
+                                                    class="badge rounded-pill {{ $linked_performance <= 49 ? 'bg-danger' : ($linked_performance >= 50 && $linked_performance <= 79 ? 'bg-warning' : 'bg-success') }}"> --}}
+                                                {{ $record->linked }}
+                                                {{-- </div> --}}
+                                            </td>
+                                            <td class="bluebackground">
+                                                {{-- <div class="badge bg-primary">
+                                                    {{ $linked_performance }}%
+                                                </div> --}}
+                                                <div
+                                                    class="badge rounded-pill {{ $linked_performance <= 49 ? 'bg-danger' : ($linked_performance >= 50 && $linked_performance <= 79 ? 'bg-warning' : 'bg-success') }}">
+                                                    {{ $linked_performance }}%
+                                                </div>
+                                            </td>
+                                            <td>{{ $record->negative }}</td>
+                                            <td>{{ $record->pending }}</td>
+                                            <td>{{ $record->invalid }}</td>
+
+                                            <td>
+                                                <div class="dropdown open">
+                                                    <button class="btn btn-secondary dropdown-toggle" type="button"
+                                                        id="triggerId" data-bs-toggle="dropdown">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                                            <path
+                                                                d="M8 256a56 56 0 1 1 112 0A56 56 0 1 1 8 256zm160 0a56 56 0 1 1 112 0 56 56 0 1 1 -112 0zm216-56a56 56 0 1 1 0 112 56 56 0 1 1 0-112z" />
+                                                        </svg>
+                                                    </button>
+                                                    <div class="dropdown-menu" aria-labelledby="triggerId">
+                                                        @can('Record edit')
+                                                            <a class="dropdown-item"
+                                                                href="{{ route('edit-record', $record->id) }}">Edit</a>
+                                                        @endcan
+                                                        @can('Record delete')
+                                                            <a class="dropdown-item"
+                                                                href="{{ route('delete-record', $record->id) }}">Delete</a>
+                                                        @endcan
+                                                    </div>
+                                                </div>
+                                                <!-- <button class="btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M8 256a56 56 0 1 1 112 0A56 56 0 1 1 8 256zm160 0a56 56 0 1 1 112 0 56 56 0 1 1 -112 0zm216-56a56 56 0 1 1 0 112 56 56 0 1 1 0-112z"/></svg></button> -->
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            @endcan
                         </table>
                     </div>
                 </div>

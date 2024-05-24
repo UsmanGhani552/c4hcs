@@ -8,8 +8,10 @@
                         <h2>Weekly</h2>
                     </div>
                     <div class="col-lg-6">
+                        @can('Weekly export')
                         <a id="" class="btn green" href="{{ route('weekly-export') }}" role="button">Export
                             </a>
+                            @endcan
                     </div>
                 </div>
             </div>
@@ -42,6 +44,7 @@
                                     {{-- <th class="text-end">Actions</th> --}}
                                 </tr>
                             </thead>
+                            @can('Weekly export')
                             <tbody class="overflow-auto">
                                 @if(count($current_week) > 0)
                                 <tr>
@@ -120,6 +123,7 @@
                                     </tr>
                                 @endforeach
                             </tbody>
+                            @endcan
                         </table>
                     </div>
                 </div>

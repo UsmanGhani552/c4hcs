@@ -11,6 +11,13 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class WeeklyController extends Controller
 {
+    public function __construct(){
+        $this->middleware('role_or_permission:Weekly access|Weekly create|Weekly edit|Weekly delete', ['only' => ['index','show']]);
+        $this->middleware('role_or_permission:Weekly create', ['only' => ['create','store']]);
+        $this->middleware('role_or_permission:Weekly edit', ['only' => ['edit','update']]);
+        $this->middleware('role_or_permission:Weekly delete', ['only' => ['destroy']]);
+    }
+
     public function index()
     {
 
@@ -49,7 +56,7 @@ class WeeklyController extends Controller
         ];
         // dd($performance);
 
-        $weeklies = Weekly::all();
+        $weeklies = Weekly::orderBy('id','Desc')->get();
         return view('weekly.index', compact('weeklies', 'weeklyTotals', 'current_week','performance'));
     }
 

@@ -2,8 +2,11 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MonthlyController;
+use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RecordController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\TargetController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\WeeklyController;
 use Illuminate\Support\Facades\Route;
 
@@ -48,4 +51,39 @@ Route::middleware(['auth'])->group(function () {
     //monthly
     Route::get('/monthly', [MonthlyController::class, 'index'])->name('monthly');
     Route::get('monthly-export',[MonthlyController::class, 'export'])->name('monthly-export');
+
+    Route::controller(PermissionController::class)->name('permission.')->group(function () {
+        Route::get('permissions', 'index')->name('index');
+        Route::get('permission-create', 'create')->name('create');
+        Route::post('permission-store', 'store')->name('store');
+        Route::get('permission-edit-{permission}', 'edit')->name('edit');
+        Route::post('permission-update-{permission}', 'update')->name('update');
+        Route::get('permission-destroy-{permission}', 'destroy')->name('destroy');
+    });
+
+    Route::controller(RoleController::class)->name('role.')->group(function () {
+        Route::get('roles', 'index')->name('index');
+        Route::get('role-create', 'create')->name('create');
+        Route::post('role-store', 'store')->name('store');
+        Route::get('role-edit-{role}', 'edit')->name('edit');
+        Route::post('role-update-{role}', 'update')->name('update');
+    });
+
+    Route::controller(UserController::class)->name('user.')->group(function () {
+        Route::get('users', 'index')->name('index');
+        Route::get('user-create', 'create')->name('create');
+        Route::post('user-store', 'store')->name('store');
+        Route::get('user-edit-{user}', 'edit')->name('edit');
+        Route::post('user-update-{user}', 'update')->name('update');
+        Route::post('user-delete-{user}', 'delete')->name('delete');
+    });
+
+    // Route::controller(AddAdminController::class)->prefix('/admin/add-admin')->name('add-admin.')->group(function () {
+    //     Route::get('/', 'index')->name('index');
+    //     Route::get('/create', 'create')->name('create');
+    //     Route::post('/store', 'store')->name('store');
+    //     Route::get('/edit/{addAdmin}', 'edit')->name('edit');
+    //     Route::post('/update/{addAdmin}', 'update')->name('update');
+    //     Route::get('/destroy/{addAdmin}', 'destroy')->name('destroy');
+    // });
 });
