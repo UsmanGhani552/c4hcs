@@ -11,6 +11,13 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class WeeklyController extends Controller
 {
+    public function __construct(){
+        $this->middleware('role_or_permission:Weekly access|Weekly create|Weekly edit|Weekly delete', ['only' => ['index','show']]);
+        $this->middleware('role_or_permission:Weekly create', ['only' => ['create','store']]);
+        $this->middleware('role_or_permission:Weekly edit', ['only' => ['edit','update']]);
+        $this->middleware('role_or_permission:Weekly delete', ['only' => ['destroy']]);
+    }
+
     public function index()
     {
 
@@ -22,7 +29,7 @@ class WeeklyController extends Controller
 
         // Retrieve entries within the current week
         $current_week = Record::whereBetween('created_at', [$startDate, $endDate])->get();
-
+        // dd($current_week[0]->user->name);
         // $current_week = Record::all();
         $weekly_target = Target::where('id', 3)->first();
         // dd($weekly_target);
@@ -38,7 +45,8 @@ class WeeklyController extends Controller
             'month' => $current_week->isEmpty() ? null : $current_week->first()->created_at->month,
             'year' => $current_week->isEmpty() ? null : $current_week->first()->created_at->year,
             'start_date' => $startDate,
-            'end_date' => $endDate
+            'end_date' => $endDate,
+            'user' => $current_week[0]->user->name ?? ''
         ];
         // dd($current_week);
         $performance = (object) [
@@ -49,7 +57,7 @@ class WeeklyController extends Controller
         ];
         // dd($performance);
 
-        $weeklies = Weekly::all();
+        $weeklies = Weekly::orderBy('id','Desc')->get();
         return view('weekly.index', compact('weeklies', 'weeklyTotals', 'current_week','performance'));
     }
 

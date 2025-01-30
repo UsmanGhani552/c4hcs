@@ -34,17 +34,12 @@ class UpdateWeeklyTotals extends Command
         // Get the current date
         $endDate = now();
 
-        // Calculate the start date of the previous month
-        $startDate = $endDate->copy()->subWeek()->startOfWeek();
-
-        // Calculate the end date of the previous Week
-        $endDate = $endDate->copy()->subWeek()->endOfWeek();    
-
-
+        // Calculate the start date (7 days ago)
+        $startDate = $endDate->copy()->subDays(6);
 
         // Retrieve entries within the last 7 days
         $entries = Record::whereBetween('created_at', [$startDate, $endDate])->get();
-
+        
         $weekly_target = Target::where('id', 3)->first();
 
         // Calculate weekly totals
@@ -59,9 +54,9 @@ class UpdateWeeklyTotals extends Command
             'month' => $entries->isEmpty() ? null : $entries->first()->created_at->month,
             'year' => $entries->isEmpty() ? null : $entries->first()->created_at->year,
             'start_date' => $startDate,
-            'end_date' => $endDate
+            'end_date' => $endDate,
+            'user_id' => $entries[0]->user_id
         ];
-
         $performance = [
             'performance_screened' => intval(number_format(($weeklyTotals['screened'] / ($weekly_target->screened * 10)) * 100, 0)),
             'performance_presumptive' => intval(number_format(($weeklyTotals['presumptive'] / ($weekly_target->presumptive * 10)) * 100, 0)),
@@ -75,13 +70,6 @@ class UpdateWeeklyTotals extends Command
         // dd($attributes);
 
         // Update or create a Week record
-        // Weekly::create($attributes);
-
-        Weekly::updateOrCreate([
-                'week_number' => $startDate->weekOfYear,
-                'year' => $startDate->year
-            ],
-            $attributes
-        );
+        Weekly::create($attributes);
     }
 }

@@ -47,6 +47,9 @@
                                     <th class="text-end">Actions</th>
                                 </tr>
                             </thead>
+                            @can('Target access')
+
+
                             <tbody class="overflow-auto">
                                 @foreach ($targets as $index => $target)
                                     <tr>
@@ -57,7 +60,11 @@
                                         @if ($index === 0)
                                             <td>
                                                 <div class="badge bg-danger">
+                                                    @if ($presumptive_sum !== 0)
                                                     {{ number_format(($presumptive_sum / $screened_sum) * 100, 0) }}%
+                                                    @else
+                                                    0%
+                                                    @endif
                                                 </div></td>
                                         @else
                                             <td></td>
@@ -67,7 +74,11 @@
                                         @if ($index === 0)
                                             <td>
                                                 <div class="badge bg-danger">
+                                                    @if ($positive_sum)
                                                     {{ number_format(($positive_sum / $presumptive_sum) * 100, 0) }}%
+                                                    @else
+                                                    0%
+                                                    @endif
                                                 </div></td>
                                         @else
                                             <td></td>
@@ -77,7 +88,11 @@
                                         @if ($index === 0)
                                             <td>
                                                 <div class="badge bg-danger">
+                                                    @if ($linked_sum)
                                                     {{ number_format(($linked_sum / $positive_sum) * 100, 0) }}%
+                                                    @else
+                                                    0%
+                                                    @endif
                                                 </div></td>
                                         @else
                                             <td></td>
@@ -91,15 +106,19 @@
                                                             d="M8 256a56 56 0 1 1 112 0A56 56 0 1 1 8 256zm160 0a56 56 0 1 1 112 0 56 56 0 1 1 -112 0zm216-56a56 56 0 1 1 0 112 56 56 0 1 1 0-112z" />
                                                     </svg>
                                                 </button>
+                                                @can('Target edit')
+
                                                 <div class="dropdown-menu" aria-labelledby="triggerId">
                                                     <a class="dropdown-item" href="{{ route('edit-target' , $target->id) }}">Edit</a>
                                                 </div>
+                                                @endcan
                                             </div>
                                             <!-- <button class="btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M8 256a56 56 0 1 1 112 0A56 56 0 1 1 8 256zm160 0a56 56 0 1 1 112 0 56 56 0 1 1 -112 0zm216-56a56 56 0 1 1 0 112 56 56 0 1 1 0-112z"/></svg></button> -->
                                         </td>
                                     </tr>
                                 @endforeach
                             </tbody>
+                            @endcan
                         </table>
                     </div>
                     {{-- <div class="topTable">

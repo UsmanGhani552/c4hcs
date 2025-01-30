@@ -24,6 +24,10 @@ class Weekly extends Model
         'performance_screened',
         'performance_presumptive',
         'performance_positive',
-        'performance_linked'
+        'performance_linked',
+        'user_id',
     ];
+    public function user(){
+        return $this->belongsTo(User::class,'user_id');
+    } 
 }

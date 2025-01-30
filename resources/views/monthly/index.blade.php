@@ -7,12 +7,15 @@
                     <div class="col-lg-6">
                         <h2>Monthly</h2>
                     </div>
+
                     <div class="col-lg-6">
+                        @can('Monthly export')
                         <a id="" class="btn green" href="{{ route('monthly-export') }}" role="button">Export
                         </a>
+                        @endcan
                     </div>
                 </div>
-            </div>dbece6
+            </div>
             @if (session()->has('success'))
                 <div class="alert alert-success">
                     {{ session()->get('success') }}
@@ -42,6 +45,7 @@
                                     {{-- <th class="text-end">Actions</th> --}}
                                 </tr>
                             </thead>
+                            @can('Monthly access')
                             <tbody class="overflow-auto">
                                 @if(count($current_month) > 0)
                                 <tr>
@@ -124,6 +128,7 @@
                                     </tr>
                                 @endforeach
                             </tbody>
+                            @endcan
                         </table>
                     </div>
                 </div>

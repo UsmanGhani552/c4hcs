@@ -11,6 +11,13 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class MonthlyController extends Controller
 {
+    public function __construct(){
+        $this->middleware('role_or_permission:Monthly access|Monthly create|Monthly edit|Monthly delete', ['only' => ['index','show']]);
+        $this->middleware('role_or_permission:Monthly create', ['only' => ['create','store']]);
+        $this->middleware('role_or_permission:Monthly edit', ['only' => ['edit','update']]);
+        $this->middleware('role_or_permission:Monthly delete', ['only' => ['destroy']]);
+    }
+
     public function index(){
 
         // Calculate the start date of the previous month
@@ -47,7 +54,7 @@ class MonthlyController extends Controller
 
         // dd($monthlyTotals);
 
-        $monthlies = Monthly::all();
+        $monthlies = Monthly::orderBy('id','Desc')->get();
         return view('monthly.index', compact('monthlies', 'monthlyTotals', 'current_month','performance'));
     }
 

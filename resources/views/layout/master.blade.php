@@ -9,6 +9,7 @@
     <link rel='stylesheet' href='https://cdn.datatables.net/1.13.5/css/dataTables.bootstrap5.min.css'>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 </head>
 
 <body>
@@ -195,7 +196,7 @@
                                         </button>
                                         <h2>Dashboard</h2>
                                     </ul>
-                                    <form class="d-flex" role="search">
+                                    {{-- <form class="d-flex" role="search">
                                         <div class="searchBtn">
                                             <input class="form-control me-2" type="search" placeholder="Search"
                                                 aria-label="Search">
@@ -206,7 +207,7 @@
                                                 </svg>
                                             </button>
                                         </div>
-                                    </form>
+                                    </form> --}}
                                 </div>
                             </div>
                         </nav>

@@ -8,8 +8,10 @@
                         <h2>Weekly</h2>
                     </div>
                     <div class="col-lg-6">
+                        @can('Weekly export')
                         <a id="" class="btn green" href="{{ route('weekly-export') }}" role="button">Export
                             </a>
+                            @endcan
                     </div>
                 </div>
             </div>
@@ -26,6 +28,7 @@
                                 <tr>
                                     <th class="text-start">Start Date</th>
                                     <th>End Date</th>
+                                    <th>User</th>
                                     <th>Screened</th>
                                     <th><div class="badge bg-primary">Performance</div></th>
                                     <th>Presumptive</th>
@@ -42,11 +45,13 @@
                                     {{-- <th class="text-end">Actions</th> --}}
                                 </tr>
                             </thead>
+                            @can('Weekly export')
                             <tbody class="overflow-auto">
                                 @if(count($current_week) > 0)
                                 <tr>
                                     <td class="text-start">{{ date('jS M', strtotime($weeklyTotals->start_date)) }}</td>
                                     <td><div class="badge bg-danger">Current Week</div></td>
+                                    <td>{{ $weeklyTotals->user }}</td>
                                     <td>{{ $weeklyTotals->screened }}</td>
                                     <td><div class="badge bg-primary">{{ $performance->screened }}%</div></td>
 
@@ -72,7 +77,12 @@
                                     <td style="display: none;"></td>
                                     <td style="display: none;"></td>
                                     <td style="display: none;"></td>
-                                    <td colspan="11" class="text-center">No Current Week Entry</td>
+                                    <td style="display: none;"></td>
+                                    <td style="display: none;"></td>
+                                    <td style="display: none;"></td>
+                                    <td colspan="16" class="text-center">No Current Week Entry</td>
+                                    <td style="display: none;"></td>
+                                    <td style="display: none;"></td>
                                     <td style="display: none;"></td>
                                     <td style="display: none;"></td>
                                     <td style="display: none;"></td>
@@ -84,6 +94,7 @@
                                     <tr>
                                         <td class="text-start">{{ date('jS M', strtotime($weekly->start_date)) }}</td>
                                         <td>{{ date('jS M', strtotime($weekly->end_date)) }}</td>
+                                        <td>{{ $weekly->user->name }}</td>
                                         <td>{{ $weekly->screened }}</td>
                                         <td><div class="badge bg-primary">{{ $weekly->performance_screened }}%</div></td>
 
@@ -120,6 +131,7 @@
                                     </tr>
                                 @endforeach
                             </tbody>
+                            @endcan
                         </table>
                     </div>
                 </div>

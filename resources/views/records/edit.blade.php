@@ -27,22 +27,27 @@
                                         value="{{ $record->lga }}">
                                         <div id="lga">
                                             <option disabled>Choose Lga</option>
-                                            <option value="agr" {{ $record->lga == 'ajr' ? 'selected' : '' }}>AJR
-                                            </option>
-                                            <option value="bdy" {{ $record->lga == 'bdy' ? 'selected' : '' }}>BDY
-                                            </option>
-                                            <option value="epe" {{ $record->lga == 'epe' ? 'selected' : '' }}>EPE
-                                            </option>
-                                            <option value="lkd" {{ $record->lga == 'lkd' ? 'selected' : '' }}>LKD
-                                            </option>
-                                            <option value="ifk" {{ $record->lga == 'ifk' ? 'selected' : '' }}>LFK
-                                            </option>
-                                            <option value="alm" {{ $record->lga == 'alm' ? 'selected' : '' }}>ALM
-                                            </option>
-                                            <option value="ojo" {{ $record->lga == 'ojo' ? 'selected' : '' }}>OJO
-                                            </option>
-                                            <option value="xxx" {{ $record->lga == 'xxx' ? 'selected' : '' }}>XXX
-                                            </option>
+                                            <option value="age" {{ $record->lga == 'age' ? 'selected' : '' }}>Agege</option>
+                                            <option value="aje" {{ $record->lga == 'aje' ? 'selected' : '' }}>Ajeromi-Ifelodun</option>
+                                            <option value="ali" {{ $record->lga == 'ali' ? 'selected' : '' }}>Alimosho</option>
+                                            <option value="amu" {{ $record->lga == 'amu' ? 'selected' : '' }}>Amuwo-Odofin</option>
+                                            <option value="apa" {{ $record->lga == 'apa' ? 'selected' : '' }}>Apapa</option>
+                                            <option value="bad" {{ $record->lga == 'bad' ? 'selected' : '' }}>Badagry</option>
+                                            <option value="epe" {{ $record->lga == 'epe' ? 'selected' : '' }}>Epe</option>
+                                            <option value="eti" {{ $record->lga == 'eti' ? 'selected' : '' }}>Eti-Osa</option>
+                                            <option value="ibe" {{ $record->lga == 'ibe' ? 'selected' : '' }}>Ibeju-Lekki</option>
+                                            <option value="ifa" {{ $record->lga == 'ifa' ? 'selected' : '' }}>Ifako-Ijaye</option>
+                                            <option value="ike" {{ $record->lga == 'ike' ? 'selected' : '' }}>Ikeja</option>
+                                            <option value="iko" {{ $record->lga == 'iko' ? 'selected' : '' }}>Ikorodu</option>
+                                            <option value="kos" {{ $record->lga == 'kos' ? 'selected' : '' }}>Kosofe</option>
+                                            <option value="lag-i" {{ $record->lga == 'lag-i' ? 'selected' : '' }}>Lagos Island</option>
+                                            <option value="lag-m" {{ $record->lga == 'lag-m' ? 'selected' : '' }}>Lagos Mainland</option>
+                                            <option value="mus" {{ $record->lga == 'mus' ? 'selected' : '' }}>Mushin</option>
+                                            <option value="ojo" {{ $record->lga == 'ojo' ? 'selected' : '' }}>Ojo</option>
+                                            <option value="osh" {{ $record->lga == 'osh' ? 'selected' : '' }}>Oshodi-Isolo</option>
+                                            <option value="somo" {{ $record->lga == 'somo' ? 'selected' : '' }}>Somolu</option>
+                                            <option value="sur" {{ $record->lga == 'sur' ? 'selected' : '' }}>Surulere</option>
+
                                         </div>
                                     </select>
                                     @error('lga')

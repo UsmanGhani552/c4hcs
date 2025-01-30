@@ -19,21 +19,41 @@
 
                         <div class="col-6">
                             <div class="row">
-                                <div class="col-2 label">
+                                <div class="col-3 label">
                                     <label for="dropdown" class="form-label" aria-required="true">LGA</label>
                                 </div>
                                 <div class="col input">
                                     <select class="form-select" aria-label="Default select example" name="lga">
                                         <div id="lga">
                                             <option selected disabled>Choose Lga</option>
-                                            <option value="ajr">AJR</option>
+                                            <option value="age">Agege</option>
+                                            <option value="aje">Ajeromi-Ifelodun</option>
+                                            <option value="ali">Alimosho</option>
+                                            <option value="amu">Amuwo-Odofin</option>
+                                            <option value="apa">Apapa</option>
+                                            <option value="bad">Badagry</option>
+                                            <option value="epe">Epe</option>
+                                            <option value="eti">Eti-Osa</option>
+                                            <option value="ibe">Ibeju-Lekki</option>
+                                            <option value="ifa">Ifako-Ijaye</option>
+                                            <option value="ike">Ikeja</option>
+                                            <option value="iko">Ikorodu</option>
+                                            <option value="kos">Kosofe</option>
+                                            <option value="lag-i">Lagos Island</option>
+                                            <option value="lag-m">Lagos Mainland</option>
+                                            <option value="mus">Mushin</option>
+                                            <option value="ojo">Ojo</option>
+                                            <option value="osh">Oshodi-Isolo</option>
+                                            <option value="somo">Somolu</option>
+                                            <option value="sur">Surulere</option>
+                                            {{-- <option value="ajr">AJR</option>
                                             <option value="bdy">BDY</option>
                                             <option value="epe">EPE</option>
                                             <option value="lkd">LKD</option>
                                             <option value="ifk">LFK</option>
                                             <option value="alm">ALM</option>
                                             <option value="ojo">OJO</option>
-                                            <option value="xxx">XXX</option>
+                                            <option value="xxx">XXX</option> --}}
                                         </div>
                                     </select>
                                     @error('lga')
@@ -45,7 +65,7 @@
                         </div>
                         <div class="col">
                             <div class="row">
-                                <div class="col-2 label">
+                                <div class="col-3 label">
                                     <label for="screened" class="form-label" aria-required="true">Screened</label>
                                 </div>
                                 <div class="col input">
@@ -61,7 +81,7 @@
                     <div class="row mainRow">
                         <div class="col">
                             <div class="row">
-                                <div class="col-2 label">
+                                <div class="col-3 label">
                                     <label for="presumptive" class="form-label" aria-required="true">Presumptive</label>
                                 </div>
                                 <div class="col input">
@@ -72,22 +92,19 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col">
+                        {{-- <div class="col">
                             <div class="row">
-                                <div class="col-2 label">
+                                <div class="col-3 label">
                                     <label for="positive" class="form-label" aria-required="true">Positive</label>
                                 </div>
                                 <div class="col input">
                                     <input type="number" name="positive" id="positive" class="form-control" disabled>
                                 </div>
                             </div>
-                        </div>
-
-                    </div>
-                    <div class="row mainRow">
+                        </div> --}}
                         <div class="col">
                             <div class="row">
-                                <div class="col-2 label">
+                                <div class="col-3 label">
                                     <label for="bacteriological" class="form-label"
                                         aria-required="true">Bacteriological</label>
                                 </div>
@@ -99,9 +116,13 @@
                                 </div>
                             </div>
                         </div>
+
+                    </div>
+                    <div class="row mainRow">
+
                         <div class="col">
                             <div class="row">
-                                <div class="col-2 label">
+                                <div class="col-3 label">
                                     <label for="clinical" class="form-label" aria-required="true">Clinical</label>
                                 </div>
                                 <div class="col input">
@@ -112,12 +133,9 @@
                                 </div>
                             </div>
                         </div>
-
-                    </div>
-                    <div class="row mainRow">
                         <div class="col">
                             <div class="row">
-                                <div class="col-2 label">
+                                <div class="col-3 label">
                                     <label for="linked" class="form-label" aria-required="true">Linked</label>
                                 </div>
                                 <div class="col input">
@@ -128,9 +146,13 @@
                                 </div>
                             </div>
                         </div>
+
+                    </div>
+                    <div class="row mainRow">
+
                         <div class="col">
                             <div class="row">
-                                <div class="col-2 label">
+                                <div class="col-3 label">
                                     <label for="negative" class="form-label" aria-required="true">Negative</label>
                                 </div>
                                 <div class="col input">
@@ -141,12 +163,9 @@
                                 </div>
                             </div>
                         </div>
-
-                    </div>
-                    <div class="row mainRow">
                         <div class="col">
                             <div class="row">
-                                <div class="col-2 label">
+                                <div class="col-3 label">
                                     <label for="pending" class="form-label" aria-required="true">Pending</label>
                                 </div>
                                 <div class="col input">
@@ -157,9 +176,13 @@
                                 </div>
                             </div>
                         </div>
+
+                    </div>
+                    <div class="row mainRow">
+
                         <div class="col-6">
                             <div class="row">
-                                <div class="col-2 label">
+                                <div class="col-3 label">
                                     <label for="invalid" class="form-label" aria-required="true">Invalid</label>
                                 </div>
                                 <div class="col input">
